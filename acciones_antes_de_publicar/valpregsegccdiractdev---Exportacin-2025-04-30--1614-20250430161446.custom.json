@@ -1,0 +1,69 @@
+{
+  "name": "val_preg_seg_(cc)_dir_act_dev - Exportación: 2025-04-30 @ 16:14",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://modeloautogestion-dev.servitel.co/verificar_preguntas_cedula",
+      "requestType": "POST",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "data_inp",
+        "type": "object",
+        "required": [
+          "cedula",
+          "id_prim_preg",
+          "rta_prim_preg",
+          "id_seg_preg",
+          "rta_seg_preg"
+        ],
+        "properties": {
+          "cedula": {
+            "type": "string"
+          },
+          "id_prim_preg": {
+            "type": "integer"
+          },
+          "rta_prim_preg": {
+            "type": "string"
+          },
+          "id_seg_preg": {
+            "type": "integer"
+          },
+          "rta_seg_preg": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "data_out",
+        "type": "object",
+        "required": [
+          "success",
+          "message"
+        ],
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "secure": false
+}
