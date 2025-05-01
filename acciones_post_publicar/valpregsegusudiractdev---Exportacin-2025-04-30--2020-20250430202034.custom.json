@@ -1,0 +1,58 @@
+{
+  "name": "val_preg_seg_(usu)_dir_act_dev - Exportación: 2025-04-30 @ 20:20",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://modeloautogestion-dev.servitel.co/verificar_preguntas",
+      "requestType": "POST",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "data_inp",
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "id_prim_preg": {
+            "type": "integer"
+          },
+          "rta_prim_preg": {
+            "type": "string"
+          },
+          "id_seg_preg": {
+            "type": "integer"
+          },
+          "rta_seg_preg": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "data_out",
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "secure": false
+}

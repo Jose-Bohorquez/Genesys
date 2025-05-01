@@ -1,0 +1,52 @@
+{
+  "name": "reg_ticket_change_pwd_dir_act_dev - Exportación: 2025-04-30 @ 20:20",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://servitel-app.com/moodle/api/reg_ticket_cambio_contrasena_da.php",
+      "requestType": "POST",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "data_inp",
+        "type": "object",
+        "required": [
+          "usuarioWp"
+        ],
+        "properties": {
+          "usuarioWp": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "data_out",
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "id_ticket": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "secure": false
+}

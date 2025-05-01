@@ -1,0 +1,46 @@
+{
+  "name": "val_(usu)_dir_act_dev - Exportación: 2025-04-30 @ 20:20",
+  "integrationType": "custom-rest-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "https://modeloautogestion-dev.servitel.co/consultar_usuario",
+      "requestType": "POST",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "title": "data_inp",
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "output": {
+      "successSchema": {
+        "title": "data_out",
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "secure": false
+}
