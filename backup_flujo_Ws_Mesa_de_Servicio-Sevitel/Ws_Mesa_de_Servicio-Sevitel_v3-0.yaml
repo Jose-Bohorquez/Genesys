@@ -1,0 +1,81 @@
+digitalBot:
+  name: Ws_Mesa_de_Servicio-Sevitel
+  description: "Flujo para construcción de Mesa de Servicio Servite -WS "
+  division: Test Servitel
+  startUpRef: "/digitalBot/bots/bot[Saludo inicial_10]"
+  defaultLanguage: es-us
+  supportedLanguages:
+    es-us:
+      defaultLanguageSkill:
+        noValue: true
+  settingsErrorHandling:
+    errorHandling:
+      exit:
+        none: true
+    enableAgentEscalation:
+      lit: true
+    errorEventHandover:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"Se produjo un error. Espere un momento mientras lo pongo en contacto con alguien que lo pueda ayudar.\")))"
+    agentEscalationConfirmation:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"¿Desea hablar con un asesor?\")))"
+    agentEscalationHandover:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"Espere un momento. Lo pondré en contacto con alguien.\")))"
+    recognitionFailureEventHandover:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"No logro comprender lo que dice. Espere un momento mientras lo pongo en contacto con alguien que lo pueda ayudar.\")))"
+    recognitionFailureEventHandling:
+      exit:
+        none: true
+    agentEscalationHandling:
+      exit:
+        none: true
+  bots:
+    - bot:
+        name: Saludo inicial
+        refId: Saludo inicial_10
+        actions:
+          - disconnect:
+              name: Desconectar
+          - exitBotFlow:
+              name: Salir del flujo de bots
+          - exitBotFlow:
+              name: Salir del flujo de bots
+  settingsKnowledge:
+    none: true
+  settingsUserInput:
+    noMatchesMax:
+      lit: 3
+    noInputsMax:
+      lit: 3
+    noInputsTimeout:
+      lit:
+        minutes: 1
+    endOfSessionMessage:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"No he tenido noticias suyas por un tiempo. Por lo tanto, voy a cerrar este chat. No dude en regresar si vuelve a necesitar mi ayuda. Gracias.\")))"
+    confirmationRejectionsMax:
+      lit: 3
+    collectionLowConfidenceThreshold:
+      lit: 20
+    collectionHighConfidenceThreshold:
+      lit: 70
+    confirmationLowConfidenceThreshold:
+      lit: 40
+    noMatchApology:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"Lo siento.\")))"
+    noInputApology:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"No se registró ninguna entrada.\")))"
+    noToConfirmationApology:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"Fue mi error.\")))"
+    confirmationNoMatchApology:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"Seleccione \\\"Sí\\\" o \\\"No\\\".\")))"
+    confirmationNoInputApology:
+      exp: "MakeCommunication(\n  ToCommunication(ToCommunication(\"No se registró ninguna entrada. Seleccione \\\"Sí\\\" o \\\"No\\\".\")))"
+  settingsBotFlow:
+    none: true
+  settingsNaturalLanguageUnderstanding:
+    nluDomainVersion:
+      intents: []
+      entities: []
+      entityTypes: []
+      language: es-us
+      languageVersions: {}
+    mutedUtterances: []
